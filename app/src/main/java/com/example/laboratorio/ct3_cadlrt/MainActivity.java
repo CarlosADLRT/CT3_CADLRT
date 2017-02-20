@@ -2,6 +2,7 @@ package com.example.laboratorio.ct3_cadlrt;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     Button m9,m0,mIgual;
     ImageButton imageButton;
     TextView textView;
+    Double a;
+    Double b,c;
+    int ope;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,139 @@ public class MainActivity extends AppCompatActivity {
         mIgual= (Button) findViewById(R.id.igual);
         imageButton= (ImageButton) findViewById(R.id.erase);
         textView= (TextView) findViewById(R.id.textView);
-        
+        textView.setText("");
+
+    }
+
+
+
+    public void onClick(View view) {
+        String text=textView.getText().toString();
+        String val="";
+        if(!text.isEmpty()) {
+            val = text.substring(text.length() - 1, text.length());
+
+        }
+
+        switch (view.getTag().toString()) {
+            case "1":
+                    if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                        textView.setText("");
+                    }
+
+                textView.setText(textView.getText()+"1");
+
+
+                break;
+            case "2":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"2");
+                break;
+            case "3":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"3");
+                break;
+            case "4":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"4");
+                break;
+            case "5":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"5");
+                break;
+            case "6":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"6");
+                break;
+            case "7":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"7");
+                break;
+            case "8":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"8");
+                break;
+            case "9":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"9");
+                break;
+            case "0":
+                if (val.equals("+")||val.equals("*")||val.equals("-")||val.equals("/")) {
+                    textView.setText("");
+                }
+                textView.setText(textView.getText()+"0");
+                break;
+            case "+":
+                a=Double.parseDouble(textView.getText().toString());
+                textView.setText(textView.getText()+"+");
+
+                ope=1;
+                break;
+            case "-":
+                a=Double.parseDouble(textView.getText().toString());
+                textView.setText(textView.getText()+"-");
+
+                ope=2;
+                break;
+            case "/":
+                a=Double.parseDouble(textView.getText().toString());
+                textView.setText(textView.getText()+"/");
+
+                ope=4;
+                break;
+            case "x":
+                a=Double.parseDouble(textView.getText().toString());
+                textView.setText(textView.getText()+"*");
+
+                ope=3;
+                break;
+            case "erase":
+                if (textView.length()>0)
+                textView.setText(textView.getText().subSequence(0,textView.getText().length()-1));
+                break;
+            case ".":
+                textView.setText(textView.getText()+".");
+                break;
+            case "=":
+
+                b=Double.parseDouble(textView.getText().toString());
+
+                switch (ope) {
+                    case 1:
+                        c=a+b;
+                        break;
+                    case 2:
+                        c=a-b;
+                        break;
+                    case 3:
+                        c=a*b;
+
+                        break;
+                    case 4:
+                        c=a/b;
+                        break;
+                }
+
+
+                textView.setText(String.valueOf(c));
+                ope=5;
+                break;
+        }
     }
 }
